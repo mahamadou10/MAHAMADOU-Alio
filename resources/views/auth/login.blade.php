@@ -9,16 +9,13 @@
             <div class="panel panel-default" style="background: rgba(0,0,0,0.7); border: 2px solid transparent; box-shadow: 1px 10px 20px 2px #000;">
                 <div class="text-center">
 
-                    <form id="" action="{{URL::route('language-chooser')}}" method="post" style="">
+                    <a href="{{url('/language/en')}}">
+                        <img width="30px" src="{{asset('img/drapeau/angleterre.png')}}"></i>
+                    </a>
+                    <a href="{{url('/language/fr')}}">
+                        <img width="30px" src="{{asset('img/drapeau/france.png')}}"></i>
+                    </a>
 
-                        {{ csrf_field() }}
-                        <select name="locale">
-                            <option value="en">English</option>
-                            <option value="fr">Francais</option>
-                        </select>
-                        <input type="submit" name="submit">
-                        {{ Form::token() }}
-                    </form>
                 </div>
                 <div class="panel-body">
                     <p class="text-center" style=""><img src="{{asset('img/etudiant.03_transparent.png')}}" style="width: 60%;"></p>

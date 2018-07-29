@@ -34,12 +34,17 @@ Route::get('/edit/{id}','EtudiantController@edit')->name('editEtudiant')->where(
 Route::post('/update/{id}','EtudiantController@update')->name('updateEtudiant')->where('id', '[0-9]+');
 
 });
+//lien pour l'authentification
 Auth::routes();
 
 
-//lien pour le choix de la langue
-Route::post('/language', array(
-	'before' 	=> 	'csrf', 
-	'as' 	=> 	'language-chooser', 
-	'uses' 			=> 	'LanguageChooserController@chooser'
-));
+//lien pour changer de langue
+Route::get('/language/{locale}','LanguageChooserController@chooser')->name('languageChooser');
+
+/*
+Route::get('setlocale/{locale}', function ($locale) {
+  if (in_array($locale, \Config::get('app.locales'))) {
+    Session::put('locale', $locale);
+  }
+  return redirect()->back();
+});*/

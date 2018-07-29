@@ -13,9 +13,11 @@ use Lang;
 
 class LanguageChooserController extends Controller
 {
-     public function chooser()
+     public function chooser($locale)
     {
-    	Session::set('locale',Input::get('locale'));
-    	return Redirect::back();
+    	if (in_array($locale, \Config::get('app.locales'))) {
+   		 Session::put('locale', $locale);
+  		}
+  		return redirect()->back();
     }
 }
