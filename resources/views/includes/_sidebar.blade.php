@@ -14,7 +14,7 @@
             <li class="active">
                 <a href="#">
                     <i class="material-icons">home</i>
-                    <p>{{trans('file.titre')}}</p>
+                    <p>{{trans('file.accueil')}}</p>
                 </a>
             </li>
             <li>

@@ -24,8 +24,8 @@ class EtudiantController extends Controller
         ]);
         Etudiant::create($request->all());
 
-        //return home
-        return back()->with('status',trans('etudiant.msgenregistrement'));
+        session()->flash('messageenregistrementok', $request->input('nom').' '.$request->input('prenom'));
+        return back();
     }
 
     
@@ -35,7 +35,9 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::findorfail($id);
 
-        return view('etudiant.show',compact('etutudiant'));
+        $titre = trans('file.consulter').'-'.strtolower(trans('file.modifier')).' '.strtolower(trans('file.etudiant'));
+
+        return view('etudiant.show',compact('etudiant','titre'));
     }
 
 
@@ -43,8 +45,10 @@ class EtudiantController extends Controller
     public function edit($id)
     {
         $etudiant = Etudiant::findorfail($id);
+
+        $titre = ucfirst(trans('file.modifier'));
         
-        return view('etudiant.edit',compact('etudiant')); 
+        return view('etudiant.edit',compact('etudiant','titre')); 
     }
 
     
@@ -56,6 +60,8 @@ class EtudiantController extends Controller
         $etudiant->nom      =   $request->input('nom');
         $etudiant->prenom   =   $request->input('prenom');
         $etudiant->save();
+
+        session()->flash('messagemiseaok', ucfirst(strtolower($request->input('prenom'))).' '.strtoupper($request->input('nom')));
 
         return back()->with('status',trans('etudiant.msgmiseajourok')); 
     }

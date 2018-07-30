@@ -23,65 +23,17 @@
     <!-- Font Awesome -->
 
     <!-- sweet alert -->
-    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert-master/dist/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert2/dist/animation.css')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style="background-image: url({{asset('img/bg4.jpg')}}); background-repeat: no-repeat;">
     <div id="app">
-       <!--  <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    
-                    <ul class="nav navbar-nav navbar-right">
-                        
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
 
         @yield('content')
+    
     </div>
 
     <!-- Scripts -->
@@ -109,7 +61,25 @@
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
 <!-- sweet laert JS -->
-<script src="{{asset('sweetalert-master/dist/sweetalert.min.js')}}"></script>
-<script src="{{asset('sweetalert-master/dist/sweetalert-dev.js')}}"></script>
+<script src="{{asset('sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('sweetalert2/dist/sweetalert2.min.js')}}"></script>
+
+<!-- notification changement de langue-->
+@if(session()->has('languechangee'))
+<script type="text/javascript">
+   swal({
+     position: 'top',
+    type: 'success',
+    title:'{{trans("file.languechangee")}}',
+    showConfirmButton: false,
+    timer: 1500,
+    animation: true,
+    imageUrl: '{{asset("img/drapeau/".Lang::locale().".png")}}',
+    imageWidth: 100,
+    imageHeight: 60,
+    customClass: 'animated fadeIn'
+})
+</script>
+@endif
 </body>
 </html>

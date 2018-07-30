@@ -17,6 +17,8 @@ class LanguageChooserController extends Controller
     {
     	if (in_array($locale, \Config::get('app.locales'))) {
    		 Session::put('locale', $locale);
+
+   		 session()->flash('languechangee', trans('file.languechangee'));
   		}
   		return redirect()->back();
     }

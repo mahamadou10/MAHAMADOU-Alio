@@ -20,10 +20,22 @@
 		'profil'						=>			'User Profile',	
 		'deconnexion'					=>			'Sign Out',	
 		'ecole'							=>			'ESP',	
-		'etudiant'						=>			'Student'/*,	
+		'etudiant'						=>			'Student',
+		'messageenregistrementok'		=>			'well recorded',	
+		'messagemiseaok'				=>			'update saved',	
+		'messagesupprimessionok'		=>			'well deleted',	
+		'languechangee'					=>			'language changed',	
+		'modifier'						=>			'Edit',	
+		'supprimer'						=>			'Remove',	
+		'miseajour'						=>			'valid update',	
+		'consulter'						=>			'consult'/*,	
 		''		=>			'',	
 		''		=>			'',	
-		''		=>			'',	*/
+		''		=>			'',	
+		
+
+*/	
+
 
 				
 

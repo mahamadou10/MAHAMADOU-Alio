@@ -21,7 +21,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">{{trans('file.nom')}}  <i class="color">*</i></label>
-                                            <input type="text" class="form-control" name="nom" value="{{ old('nom') }}" >
+                                            <input type="text" class="form-control" name="nom" value="@if(!isset($etudiant)) {{ old('nom') }} @else {{$etudiant->nom}} @endif" >
                                         </div>
                                         @if ($errors->has('nom'))
                                             <span class="help-block">
@@ -33,7 +33,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">{{trans('file.prenom')}}  <i class="color">*</i></label>
-                                            <input type="text" class="form-control" name="prenom" value="{{ old('prenom') }}" >
+                                            <input type="text" class="form-control" name="prenom" value="@if(!isset($etudiant)) {{ old('prenom') }} @else {{$etudiant->prenom}} @endif" >
                                         </div>
                                         @if ($errors->has('prenom'))
                                             <span class="help-block">
@@ -44,7 +44,18 @@
                                 </div>
 
                             <div class="clearfix text-center">
-                            <button type="submit" class="btn btn-success text-center">{{trans('file.enregistrer')}}</button>
+
+                            <button type="submit" class="btn btn-success text-center">
+                                @if(!isset($etudiant)) 
+
+                                    {{trans('file.enregistrer')}}
+                                
+                                @else
+                                    
+                                    {{trans('file.miseajour')}}
+                                
+                                @endif
+                            </button>
                                 
                             </div>
                         {!! Form::close() !!}

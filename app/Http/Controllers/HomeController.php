@@ -33,6 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         $etudiants = Etudiant::all();
-        return view('home',compact('etudiants'));
+        $titre = trans('file.accueil');
+        return view('home',compact('etudiants','titre'));
     }
 }

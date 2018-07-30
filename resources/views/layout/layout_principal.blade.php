@@ -6,11 +6,15 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('etudiant.petit.76x76.png')}}">
     <link rel="icon" type="image/png" href="{{asset('etudiant.petit.64x64.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Etudiant  </title>
+    <title>{{trans('file.etudiant')}} - {{$titre}}  </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width">
     <!-- Bootstrap core CSS     -->
     <link href="{{asset('dash/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Css bootstrap filtre -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
     <!--  Material Dashboard CSS    -->
     <link href="{{asset('dash/assets/css/material-dashboard.css?v=1.2.0')}}" rel="stylesheet">
     <!--  CSS for Demo Purpose, don't include it in your project     -->
@@ -24,7 +28,9 @@
     <!-- Font Awesome -->
 
     <!-- sweet alert -->
-    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert-master/dist/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('sweetalert2/dist/animation.css')}}">
+
 
 <!-- 
     <link rel="stylesheet" href="{{asset('dash/assets/font/font-awesome.min.css')}}">
@@ -57,7 +63,7 @@
     .breadcrumb{
         box-shadow: 1px 10px 20px 1px #ccc;
         margin-bottom: 40px;
-        margin-top: -60px;
+        margin-top: 30px;
         border: 2px solid #DFDFDF;
     }
     .breadcrumb > li + li:before {
@@ -117,8 +123,8 @@
 <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
 <!-- sweet laert JS -->
-<script src="{{asset('sweetalert-master/dist/sweetalert.min.js')}}"></script>
-<script src="{{asset('sweetalert-master/dist/sweetalert-dev.js')}}"></script>
+<script src="{{asset('sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('sweetalert2/dist/sweetalert2.min.js')}}"></script>
 
 
 
@@ -150,23 +156,107 @@
 @endif
 
 
-<!-- definition de message flash pour ajout de tyoe infrastructure-->
-@if(session()->has('message_infrastructure'))
+<!-- message ajouter etudiant-->
+@if(session()->has('messageenregistrementok'))
 <script type="text/javascript">
-    swal("{{session()->get('message_infrastructure')}}", "Infrastructure bien enregistrée","success")
+   swal({
+    title:'{{trans("file.etudiant")}}',
+    html:'<h4>{{session()->get("messageenregistrementok")}}</h4>'+
+         '<h6>{{trans("file.messageenregistrementok")}}</h6>',
+    imageUrl: '{{asset("img/etudiant.gif")}}',
+    imageWidth: 116,
+    imageHeight: 168,
+    animation: false,
+    customClass: 'animated zoomIn'
+})
 </script>
 @endif
 
 
-<!-- definition de message flash pour ajout d'intervention-->
-@if(session()->has('message_intervention'))
+<!-- message ajouter etudiant-->
+@if(session()->has('messagemiseaok'))
 <script type="text/javascript">
-    swal("{{session()->get('message_intervention')}}", "Intervention bien enregistrée","success")
+   swal({
+    type: 'success',
+    title:'{{trans("file.etudiant")}}',
+    html:'<h4>{{session()->get("messagemiseaok")}}</h4>'+
+         '<h6>{{trans("file.messagemiseaok")}}</h6>'
+    })
+</script>
+@endif
+
+
+
+<!-- notification changement de langue-->
+@if(session()->has('languechangee'))
+<script type="text/javascript">
+   swal({
+    position: 'top-end',
+    type: 'success',
+    title:'{{trans("file.languechangee")}}',
+    showConfirmButton: false,
+    timer: 1500,
+    animation: true,
+    imageUrl: '{{asset("img/drapeau/".Lang::locale().".png")}}',
+    imageWidth: 100,
+    imageHeight: 60,
+    customClass: 'animated fadeIn'
+})
 </script>
 @endif
 
 <script type="text/javascript">
-   
+
+    $(document).ready(function(){
+       readProducts();
+
+       $(document).on('click', '#delete_product',function(e) {
+           
+           var productId = $(this).data('id');
+           SwalDelete(productId);
+           e.preventDefault();
+
+       });
+    });
+
+
+
+    function SwalDelete(productId) {
+        swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!',
+
+          onfirm:function() {
+              return new Promis(function() {
+                 $.ajax({
+                    url:'etudiants/delete/'+productId,
+                    type:'GET',
+                    data:'delete='+productId,
+                    dataType:'json'
+                 })
+                 .done(function(response) {
+                     swal('Deleted!','Your file has been deleted.','success');
+                     readProducts();
+                 })
+                 .fail(function() {
+                     swalWithBootstrapButtons('Cancelled','Your imaginary file is safe :)','error');
+                 });
+              });
+          },
+          allowOutsideClick:false});
+    }
+    function readProducts() {
+        $('#load-products').load('/');
+    }
 </script>
+
+  
+
+
 
 </html>

@@ -7,19 +7,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"> {{trans('file.accueil')}}</a>
+            <a class="navbar-brand" href="#"> {{ucfirst($titre)}}</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/angleterre.png')}}"></i>
+                    <a href="{{url('/language/en')}}" class="dropdown-toggle">
+                        <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/en.png')}}"></i>
                         <p class="hidden-lg hidden-md">English</p>
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/france.png')}}"></i>
+                    <a href="{{url('/language/fr')}}" class="dropdown-toggle">
+                        <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/fr.png')}}"></i>
                         <p class="hidden-lg hidden-md">Français</p>
                     </a>
                 </li>

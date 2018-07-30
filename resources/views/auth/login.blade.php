@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-md-5 col-md-offset-4" style="margin-top: 40px;">
             <div class="panel panel-default" style="background: rgba(0,0,0,0.7); border: 2px solid transparent; box-shadow: 1px 10px 20px 2px #000;">
-                <div class="text-center">
+                <div class="text-center" style="margin-top: 5px;">
 
-                    <a href="{{url('/language/en')}}">
-                        <img width="30px" src="{{asset('img/drapeau/angleterre.png')}}"></i>
+                    <a href="{{url('/language/en')}}" style="margin-right: 10px;">
+                        <img width="30px" src="{{asset('img/drapeau/en.png')}}"></i>
                     </a>
                     <a href="{{url('/language/fr')}}">
-                        <img width="30px" src="{{asset('img/drapeau/france.png')}}"></i>
+                        <img width="30px" src="{{asset('img/drapeau/fr.png')}}"></i>
                     </a>
 
                 </div>

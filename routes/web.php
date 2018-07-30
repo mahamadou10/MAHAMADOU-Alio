@@ -33,6 +33,9 @@ Route::get('/edit/{id}','EtudiantController@edit')->name('editEtudiant')->where(
 //Lien modifier valider la modification
 Route::post('/update/{id}','EtudiantController@update')->name('updateEtudiant')->where('id', '[0-9]+');
 
+//Lien pour supprimer un etudiant
+Route::get('/delete/{id}','EtudiantController@destroy')->name('deleteEtudiant')->where('id', '[0-9]+');
+
 });
 //lien pour l'authentification
 Auth::routes();

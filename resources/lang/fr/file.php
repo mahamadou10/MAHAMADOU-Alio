@@ -19,11 +19,20 @@
 		'profil'						=>			'Profil de l\'utilisateur',	
 		'deconnexion'					=>			'Déconnexion',	
 		'ecole'							=>			'ESP',	
-		'etudiant'						=>			'Etudiant'/*,	
+		'etudiant'						=>			'Etudiant',	
+		'messageenregistrementok'		=>			'bien enregistré',	
+		'messagemiseaok'				=>			'mise à jour bien enregistré',	
+		'messagesupprimessionok'		=>			'bien supprimé',	
+		'languechangee'					=>			'langue changée',	
+		'modifier'						=>			'Modifier',	
+		'supprimer'						=>			'Supprimer',	
+		'miseajour'						=>			'valider mise à jour',	
+		'consulter'						=>			'consulter'/*,	
 		''		=>			'',	
 		''		=>			'',	
-		''		=>			'',	*/
+		''		=>			'',	
+		
 
-				
+*/				
 
 	];
