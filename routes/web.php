@@ -37,17 +37,16 @@ Route::post('/update/{id}','EtudiantController@update')->name('updateEtudiant')-
 Route::get('/delete/{id}','EtudiantController@destroy')->name('deleteEtudiant')->where('id', '[0-9]+');
 
 });
-//lien pour l'authentification
+
+//Lien pour l'authentification
 Auth::routes();
 
 
 //lien pour changer de langue
 Route::get('/language/{locale}','LanguageChooserController@chooser')->name('languageChooser');
 
-/*
-Route::get('setlocale/{locale}', function ($locale) {
-  if (in_array($locale, \Config::get('app.locales'))) {
-    Session::put('locale', $locale);
-  }
-  return redirect()->back();
-});*/
+
+//Lien pour export des fichiers excel
+Route::get('product-list', 'ProductController@list')->name('product.list');
+Route::post('product-import', 'ProductController@productsImport')->name('product.import');
+Route::get('product-export/{type}', 'ProductController@productsExport')->name('product.export');

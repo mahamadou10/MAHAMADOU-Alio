@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5 col-md-offset-4" style="margin-top: 40px;">
-            <div class="panel panel-default" style="background: rgba(0,0,0,0.7); border: 2px solid transparent; box-shadow: 1px 10px 20px 2px #000;">
+            <div class="panel panel-default">
                 <div class="text-center" style="margin-top: 5px;">
 
                     <a href="{{url('/language/en')}}" style="margin-right: 10px;">
@@ -18,15 +18,14 @@
 
                 </div>
                 <div class="panel-body">
-                    <p class="text-center" style=""><img src="{{asset('img/etudiant.03_transparent.png')}}" style="width: 60%;"></p>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" style="margin-bottom: 30px;">
-                            <label for="email" class="col-md-4 " style="margin-bottom: -10px;"><i class="material-icons">person</i></label>
+                            <label for="email" class="col-md-4 " style="margin-bottom: -10px;">Email<i class="material-icons">person</i></label>
 
 
                             <div class="col-md-6">
-                                <input style="color: #fff;" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{trans('file.email')}}" required autofocus>
+                                <input style="color: #000;" id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="{{trans('file.email')}}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -37,10 +36,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4"><i class="material-icons">lock</i></label>
+                            <label for="password" class="col-md-4">Passe :<i class="material-icons">lock</i></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" style="color: #fff;" class="form-control" name="password" placeholder="{{trans('file.motDePasse')}}" required >
+                                <input id="password" type="password" style="color: #000;" class="form-control" name="password" placeholder="{{trans('file.motDePasse')}}" required >
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

@@ -77,6 +77,9 @@
 
 <body>
     <div class="wrapper">
+        <!-- modal user -->
+        @include('../includes/_user')
+        
         <!-- side bar -->
         @include('../includes/_sidebar')
         <!-- /side bar -->

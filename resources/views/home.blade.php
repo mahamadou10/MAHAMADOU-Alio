@@ -1,4 +1,4 @@
-@extends('layout.layout_principal')
+@extends('layouts.app')
 
 <!-- css table filtre -->
 @section('css_table')

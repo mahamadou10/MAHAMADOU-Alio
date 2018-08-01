@@ -1,12 +1,13 @@
-@extends('layout.layout_principal')
+@extends('layouts.app')
 
 @section('content')
 
-@include('../includes/_file_ariane')
 <div class="row">
 
 	<!-- ___    FORMULAIRE AJOUT OU MODIFIER UN FORMULAIRE   ___-->
-	<div class="col-md-5 col-md-offset-3 col-md-12">
+	<div class="col-md-5 col-md-offset-3">
+		@include('../includes/_file_ariane')
+	    
 	    @include('etudiant._form')
 
 	</div> 

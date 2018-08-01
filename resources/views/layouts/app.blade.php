@@ -9,9 +9,9 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width">
     <!-- Bootstrap core CSS     -->
-    <link href="{{asset('dash/assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!--  Material Dashboard CSS    -->
     <link href="{{asset('dash/assets/css/material-dashboard.css?v=1.2.0')}}" rel="stylesheet">
+    <link href="{{asset('dash/assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{asset('dash/assets/css/demo.css')}}" rel="stylesheet">
     <!--     Fonts and icons     -->
@@ -29,8 +29,76 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: url({{asset('img/bg4.jpg')}}); background-repeat: no-repeat;">
+<body style="background-image: url({{asset('img/backroun.jpg')}}); background-repeat: no-repeat;">
     <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    
+                    <ul class="nav navbar-nav">
+                        &nbsp;
+                    </ul>
+
+                    
+                    <ul class="nav navbar-nav navbar-left">
+                        
+                        @guest
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+
+                            <li class="dropdown">
+                                <a href="{{url('/language/en')}}" class="dropdown-toggle">
+                                    <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/en.png')}}"></i>
+                                    <p class="hidden-lg hidden-md">English</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="{{url('/language/fr')}}" class="dropdown-toggle">
+                                    <i class="material-icons"><img width="30px" src="{{asset('img/drapeau/fr.png')}}"></i>
+                                    <p class="hidden-lg hidden-md">Français</p>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            <ol class="breadcrumb">
+                              <li><a href="/" title="Accueil">{{trans('file.accueil')}}</a></li>
+                              <li class="active">{{$titre}}</li>
+                            </ol>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         @yield('content')
     

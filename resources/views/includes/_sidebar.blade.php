@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#exampleModal" data-toggle="modal">
                     <i class="material-icons">person</i>
                     <p>{{trans('file.profil')}}</p>
                 </a>

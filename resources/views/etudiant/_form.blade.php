@@ -2,8 +2,7 @@
 		   
                 <div class="card card-nav-tabs">
                     <div class="card-header text-center" data-background-color="green" >
-                        <h4 class="title"> <i class="material-icons">person_add</i> </h4>
-                        <p class="category">{{trans('file.ajoutModifier')}}</p>
+                        
                     </div>
 
                     <div class="card-content">
@@ -19,7 +18,7 @@
                                 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group label-floating">
+                                        <div class="form-group ">
                                             <label class="control-label">{{trans('file.nom')}}  <i class="color">*</i></label>
                                             <input type="text" class="form-control" name="nom" value="@if(!isset($etudiant)) {{ old('nom') }} @else {{$etudiant->nom}} @endif" >
                                         </div>
@@ -31,7 +30,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <div class="form-group label-floating">
+                                        <div class="form-group">
                                             <label class="control-label">{{trans('file.prenom')}}  <i class="color">*</i></label>
                                             <input type="text" class="form-control" name="prenom" value="@if(!isset($etudiant)) {{ old('prenom') }} @else {{$etudiant->prenom}} @endif" >
                                         </div>
